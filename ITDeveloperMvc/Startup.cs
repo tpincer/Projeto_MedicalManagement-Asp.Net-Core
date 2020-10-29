@@ -55,6 +55,15 @@ namespace ITDeveloperMvc
 
             app.UseMvc(routes =>
             {
+
+    //            routes.MapRoute(
+    //name: "modulos",
+    //template: "Prontuario/{controller=Home}/{action=Index}/{id?}");
+
+    //            routes.MapRoute(
+    //name: "pacientes",
+    //template: "{controller=Home}/{action=Index}/{id}/{paciente}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
