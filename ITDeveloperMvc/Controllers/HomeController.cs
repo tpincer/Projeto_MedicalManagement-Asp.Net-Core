@@ -1,6 +1,5 @@
 ﻿using ITDeveloperMvc.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Diagnostics;
 
 namespace ITDeveloperMvc.Controllers
