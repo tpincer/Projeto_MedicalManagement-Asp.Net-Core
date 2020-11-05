@@ -1,0 +1,31 @@
+﻿@using ITDeveloperDomain.Enums
+@model ITDeveloperDomain.Models.Paciente
+
+@{
+    ViewData["Title"] = "Adicionar Paciente";
+}
+
+<div class="row">
+    <div class="panel panel-heading">
+        <h3>Adicionar Paciente</h3>
+    </div>
+    <div class="panel panel-body">
+        <div class="col-md-4">
+            <form asp-controller="Paciente" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <partial name="_edit_create" />
+
+                <div class="form-group">
+                    <input type="submit" value="Adicionar Paciente" class="btn btn-success" />
+                    <a asp-controller="Paciente" asp-action="Index" class="btn btn-warning">Voltar para Lista</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

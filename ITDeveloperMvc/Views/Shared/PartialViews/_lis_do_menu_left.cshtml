@@ -6,9 +6,9 @@
 
 
 
-<li>
-    <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Demo - Rotas</span></a>
-    <ul class="sub">
+<li class="dropdown">
+    <a href="#" class="dropdown" data-toggle="dropdown"><i class="l-ecommerce-graph1"></i> <span class="txt">Demo - Rotas</span></a>
+    <ul class="dropdown-menu">
         <li>
             <a asp-controller="Home" asp-action="Index"><span class="txt">Home</span></a>
         </li>
@@ -26,8 +26,13 @@
 </li>
 
 <li>
-    <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Produtos</span></a>
-    <ul class="sub">
+    <a asp-controller="Paciente" asp-action="Index"><i class="l-basic-chronometer"></i><span class="txt">Pacientes</span></a>
+
+</li>
+
+<li>
+    <a href="#" class="dropdown" data-toggle="dropdown"><i class="l-ecommerce-graph1"></i> <span class="txt">Produtos</span></a>
+    <ul class="dropdown-menu">
         <li>
             <a asp-controller="Produto" asp-action="Index"><span class="txt">Produtos</span></a>
         </li>

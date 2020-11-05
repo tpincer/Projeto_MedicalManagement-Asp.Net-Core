@@ -1,0 +1,24 @@
+﻿@model ITDeveloperDomain.Models.Paciente
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+    <div class="panel panel-heading">
+        <h3>Detalhes de Pacientes</h3>
+    </div>
+
+    <div class="panel panel-body">
+
+        <div>
+
+            <partial name="_delete_details">
+
+        </div>
+        <div>
+            <a asp-controller="Paciente" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+            <a asp-controller="Paciente" asp-action="Index" class="btn btn-info">Voltar a Lista</a>
+        </div>
+    </div>
+</div>

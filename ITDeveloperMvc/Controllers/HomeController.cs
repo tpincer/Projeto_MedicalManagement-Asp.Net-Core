@@ -5,8 +5,8 @@ using System.Diagnostics;
 namespace ITDeveloperMvc.Controllers
 {
     [Route("")]
+    [Route("gestao-de-paciente")]
     [Route("gestao-de-pacientes")]
-    [Route("api/[controller]")]
     public class HomeController : Controller
     {
         [Route("")]
