@@ -1,6 +1,7 @@
 ﻿using ITDeveloperData.ORM;
 using ITDeveloperDomain.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -20,18 +21,17 @@ namespace ITDeveloperMvc.Controllers
         public async Task<IActionResult> Index()
         {
 
-            return View(await _context.Paciente.ToListAsync());
+            return View(await _context.Paciente.Include(navigationPropertyPath: x => x.EstadoPaciente).AsNoTracking().ToListAsync());
         }
 
-        public async Task<IActionResult> Details(Guid? id)
+        public async Task<IActionResult> Details(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var paciente = await _context.Paciente
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var paciente = await _context.Paciente.Include(x=> x.EstadoPaciente).AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
             if (paciente == null)
             {
                 return NotFound();
@@ -42,6 +42,7 @@ namespace ITDeveloperMvc.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.EstadoPaciente = new SelectList(_context.EstadoPaciente, "id", "Descricao");
             return View();
         }
 
@@ -57,6 +58,8 @@ namespace ITDeveloperMvc.Controllers
               //  return RedirectToAction(nameof(Index));
                 return RedirectToAction("Index");
             }
+            ViewBag.EstadoPaciente = new SelectList(_context.EstadoPaciente, "id", "Descricao", paciente.EstadoPacienteID);
+
             return View(paciente);
         }
 
@@ -72,6 +75,8 @@ namespace ITDeveloperMvc.Controllers
             {
                 return NotFound();
             }
+            ViewBag.EstadoPaciente = new SelectList(_context.EstadoPaciente, "id", "Descricao", paciente.EstadoPacienteID);
+
             return View(paciente);
         }
 
@@ -104,18 +109,19 @@ namespace ITDeveloperMvc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.EstadoPaciente = new SelectList(_context.EstadoPaciente, "id", "Descricao", paciente.EstadoPacienteID);
+
             return View(paciente);
         }
 
-        public async Task<IActionResult> Delete(Guid? id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var paciente = await _context.Paciente
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var paciente = await _context.Paciente.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
             if (paciente == null)
             {
                 return NotFound();
