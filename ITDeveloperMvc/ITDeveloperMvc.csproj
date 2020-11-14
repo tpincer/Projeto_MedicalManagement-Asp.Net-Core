@@ -45,4 +45,10 @@
     <ProjectReference Include="..\..\src\ITDeveloperData\ITDeveloperData.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewComponents\CabecalhoModulos\" />
+  </ItemGroup>
+
 </Project>
